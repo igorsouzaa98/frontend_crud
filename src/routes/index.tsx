@@ -1,14 +1,28 @@
-import {Routes, Route, Navigate} from 'react-router-dom'
-import {Button} from "@mui/material";
-import {useAppThemeContext} from "../shared/contexts";
+import {useEffect} from 'react'
+import {Navigate, Route, Routes} from 'react-router-dom'
+import {Films} from "../pages";
 
-export const AppRoutes = () =>{
-    const {toggleTheme} = useAppThemeContext()
-    return(
+import {useDrawerContext} from '../shared/contexts'
+
+export const AppRoutes = () => {
+    const {toggleDrawerOpen, setDrawerOptions} = useDrawerContext()
+
+    useEffect(() => {
+        setDrawerOptions([
+            {
+                icon: 'movie',
+                path: '/movies',
+                label: 'Filmes',
+            }
+        ])
+    }, [])
+
+    return (
         <Routes>
-            <Route path ='/home' element ={<Button variant='contained' color='primary' onClick={toggleTheme}>Mudar Tema</Button>}>
-            </Route>
-            <Route path='*' element={<Navigate to='/home' />} />
+            <Route path="/home"
+                   element={<Films/>}/>
+
+            <Route path="*" element={<Navigate to="/home"/>}/>
         </Routes>
     )
 }
