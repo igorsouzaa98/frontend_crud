@@ -1,6 +1,6 @@
 import {useEffect} from 'react'
 import {Navigate, Route, Routes} from 'react-router-dom'
-import {Films} from "../pages";
+import {Dashboard} from "../pages";
 
 import {useDrawerContext} from '../shared/contexts'
 
@@ -10,9 +10,9 @@ export const AppRoutes = () => {
     useEffect(() => {
         setDrawerOptions([
             {
-                icon: 'movie',
-                path: '/movies',
-                label: 'Filmes',
+                icon: 'home',
+                path: '/home',
+                label: 'Dashboard',
             }
         ])
     }, [])
@@ -20,7 +20,7 @@ export const AppRoutes = () => {
     return (
         <Routes>
             <Route path="/home"
-                   element={<Films/>}/>
+                   element={<Dashboard/>}/>
 
             <Route path="*" element={<Navigate to="/home"/>}/>
         </Routes>
