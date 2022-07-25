@@ -1,9 +1,9 @@
 import {LayoutBasePag} from '../../shared/layouts'
-import {FerramentasDaListagem} from "../../shared/components";
+import {FerramentasDeDetalhe} from "../../shared/components";
 
 export const Dashboard = () => {
     return (
-        <LayoutBasePag tittle={'Dashboard'} toolBar={(<FerramentasDaListagem mostrarInputBusca/>)}>
+        <LayoutBasePag tittle={'Dashboard'} toolBar={(<FerramentasDeDetalhe/>)}>
             <p>Algo</p>
         </LayoutBasePag>
     )
