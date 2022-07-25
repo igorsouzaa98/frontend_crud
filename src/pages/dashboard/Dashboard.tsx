@@ -3,7 +3,8 @@ import {FerramentasDeDetalhe} from "../../shared/components";
 
 export const Dashboard = () => {
     return (
-        <LayoutBasePag tittle={'Dashboard'} toolBar={(<FerramentasDeDetalhe/>)}>
+        <LayoutBasePag tittle={'Dashboard'}
+                       toolBar={(<FerramentasDeDetalhe mostrarBotaoSalvarFechar mostrarBotaoSalvarFecharCarregando/>)}>
             <p>Algo</p>
         </LayoutBasePag>
     )

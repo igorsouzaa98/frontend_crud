@@ -1,15 +1,20 @@
 import React from "react";
 import {Box} from "@mui/system";
-import {Button, Divider, Icon, Paper, useTheme} from "@mui/material";
+import {Button, Divider, Icon, Paper, Skeleton, useTheme} from "@mui/material";
 
 interface IFerramentasDeDetalheProps {
     textoBotao?: string
 
     mostrarBotaoNovo?: boolean
+    mostrarBotaoNovoCarregando?: boolean
     mostrarBotaoVoltar?: boolean
+    mostrarBotaoVoltarCarregando?: boolean
     mostrarBotaoApagar?: boolean
+    mostrarBotaoApagarCarregando?: boolean
     mostrarBotaoSalvar?: boolean
+    mostrarBotaoSalvarCarregando?: boolean
     mostrarBotaoSalvarFechar?: boolean
+    mostrarBotaoSalvarFecharCarregando?: boolean
 
     aoClicarEmNovo?: () => void
     aoClicarEmVoltar?: () => void
@@ -27,6 +32,12 @@ export const FerramentasDeDetalhe: React.FC<IFerramentasDeDetalheProps> =
          mostrarBotaoVoltar = true,
          mostrarBotaoNovo = true,
          mostrarBotaoSalvar = true,
+
+         mostrarBotaoApagarCarregando = false,
+         mostrarBotaoVoltarCarregando = false,
+         mostrarBotaoSalvarFecharCarregando = false,
+         mostrarBotaoSalvarCarregando = false,
+         mostrarBotaoNovoCarregando = false,
 
          aoClicarEmNovo,
          aoCLicarEmSalvarFechar,
@@ -46,7 +57,7 @@ export const FerramentasDeDetalhe: React.FC<IFerramentasDeDetalheProps> =
                  alignItems='center'
                  component={Paper}
             >
-                {mostrarBotaoSalvar && (
+                {(mostrarBotaoSalvar && !mostrarBotaoSalvarCarregando) && (
                     <Button
                         color='primary'
                         disableElevation
@@ -55,8 +66,11 @@ export const FerramentasDeDetalhe: React.FC<IFerramentasDeDetalheProps> =
                         onClick={aoClicarEmSalvar}
                     >Salvar</Button>
                 )}
+                {mostrarBotaoSalvarCarregando && (
+                    <Skeleton width={109} height={60}/>
+                )}
 
-                {mostrarBotaoSalvarFechar && (
+                {(mostrarBotaoSalvarFechar && !mostrarBotaoSalvarFecharCarregando) && (
                     <Button
                         color='primary'
                         disableElevation
@@ -65,8 +79,11 @@ export const FerramentasDeDetalhe: React.FC<IFerramentasDeDetalheProps> =
                         onClick={aoCLicarEmSalvarFechar}
                     >Salvar e voltar</Button>
                 )}
+                {mostrarBotaoSalvarFecharCarregando && (
+                    <Skeleton width={180} height={60}/>
+                )}
 
-                {mostrarBotaoApagar && (
+                {(mostrarBotaoApagar && !mostrarBotaoApagarCarregando) && (
                     <Button
                         color='primary'
                         disableElevation
@@ -75,8 +92,12 @@ export const FerramentasDeDetalhe: React.FC<IFerramentasDeDetalheProps> =
                         onClick={aoClicarEmApagar}
                     >Apagar</Button>
                 )}
+                {mostrarBotaoApagarCarregando && (
+                    <Skeleton width={109} height={60}/>
+                )}
 
-                {mostrarBotaoNovo && (
+
+                {(mostrarBotaoNovo && !mostrarBotaoNovoCarregando) && (
                     <Button
                         color='primary'
                         disableElevation
@@ -85,10 +106,13 @@ export const FerramentasDeDetalhe: React.FC<IFerramentasDeDetalheProps> =
                         onClick={aoClicarEmNovo}
                     >{textoBotao}</Button>
                 )}
+                {mostrarBotaoNovoCarregando && (
+                    <Skeleton width={109} height={60}/>
+                )}
 
                 <Divider variant='middle' orientation='vertical'/>
 
-                {mostrarBotaoVoltar && (
+                {(mostrarBotaoVoltar && !mostrarBotaoVoltarCarregando) && (
                     <Button
                         color='primary'
                         disableElevation
@@ -96,6 +120,9 @@ export const FerramentasDeDetalhe: React.FC<IFerramentasDeDetalheProps> =
                         startIcon={<Icon>arrow_back</Icon>}
                         onClick={aoClicarEmVoltar}
                     >Voltar</Button>
+                )}
+                {mostrarBotaoVoltarCarregando && (
+                    <Skeleton width={109} height={60}/>
                 )}
             </Box>
         )
